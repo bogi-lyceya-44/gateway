@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+option go_package = "github.com/bogi-lyceya-44/gateway/internal/pb/api/gateway/topics;gateway_topics";
+
+package api.v1.gateway.topics;
+
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "api/gateway/topics/models.proto";
+
+service TopicService {
+  rpc GetTopic(GetTopicRequest) returns (GetTopicResponse) {
+    option (google.api.http) = {
+      get : "/api/v1/topics/{id=*}"
+    };
+  }
+
+  rpc CreateTopic(CreateTopicRequest) returns (CreateTopicResponse) {
+    option (google.api.http) = {
+      patch : "/api/v1/topics"
+      body : "*"
+    };
+  }
+
+  rpc UpdateTopic(UpdateTopicRequest) returns (UpdateTopicResponse) {
+    option (google.api.http) = {
+      put : "/api/v1/topics/{id=*}"
+      body : "topic_to_update"
+    };
+  }
+
+  rpc DeleteTopic(DeleteTopicRequest) returns (DeleteTopicResponse) {
+    option (google.api.http) = {
+      delete : "/api/v1/topics/{id=*}"
+    };
+  }
+}
+
+message GetTopicRequest { int64 id = 1; }
+
+message GetTopicResponse { Topic topic = 1; }
+
+message CreateTopicRequest {
+  message TopicPrototype {
+    string name = 1;
+    repeated int64 task_ids = 2;
+  }
+
+  TopicPrototype topic_to_create = 1;
+}
+
+message CreateTopicResponse { int64 id = 1; }
+
+message UpdateTopicRequest {
+  message TopicPrototype {
+    optional string name = 1;
+    repeated int64 task_ids = 2;
+  }
+
+  int64 id = 1;
+  TopicPrototype topic_to_update = 2;
+}
+
+message UpdateTopicResponse {}
+
+message DeleteTopicRequest { int64 id = 1; }
+
+message DeleteTopicResponse {}

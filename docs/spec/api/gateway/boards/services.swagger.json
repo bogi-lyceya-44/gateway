@@ -1,0 +1,511 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "api/gateway/boards/services.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "BoardService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/boards": {
+      "get": {
+        "operationId": "BoardService_GetAllBoards",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/boardsGetAllBoardsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "BoardService"
+        ]
+      },
+      "post": {
+        "operationId": "BoardService_CreateBoard",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/boardsCreateBoardResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/boardsCreateBoardRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BoardService"
+        ]
+      }
+    },
+    "/api/v1/boards/order": {
+      "get": {
+        "operationId": "BoardService_GetBoardsOrder",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/boardsGetBoardsOrderResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "BoardService"
+        ]
+      }
+    },
+    "/api/v1/boards/{id}": {
+      "get": {
+        "operationId": "BoardService_GetBoard",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/boardsGetBoardResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64",
+            "pattern": "[^/]+"
+          }
+        ],
+        "tags": [
+          "BoardService"
+        ]
+      },
+      "delete": {
+        "operationId": "BoardService_DeleteBoard",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/boardsDeleteBoardResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64",
+            "pattern": "[^/]+"
+          }
+        ],
+        "tags": [
+          "BoardService"
+        ]
+      },
+      "patch": {
+        "operationId": "BoardService_UpdateBoard",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/boardsUpdateBoardResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64",
+            "pattern": "[^/]+"
+          },
+          {
+            "name": "boardToUpdate",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/boardsUpdateBoardRequestBoardPrototype"
+            }
+          }
+        ],
+        "tags": [
+          "BoardService"
+        ]
+      }
+    },
+    "/api/v1/boards/{id}/content": {
+      "get": {
+        "operationId": "BoardService_GetBoardContent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/boardsGetBoardContentResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64",
+            "pattern": "[^/]+"
+          }
+        ],
+        "tags": [
+          "BoardService"
+        ]
+      }
+    },
+    "/api/v1/boards/{id}/order": {
+      "patch": {
+        "operationId": "BoardService_ChangeBoardOrder",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/boardsChangeBoardOrderResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64",
+            "pattern": "[^/]+"
+          },
+          {
+            "name": "orderToChange",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChangeBoardOrderRequestBoardOrder"
+            }
+          }
+        ],
+        "tags": [
+          "BoardService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ChangeBoardOrderRequestBoardOrder": {
+      "type": "object",
+      "properties": {
+        "place": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "boardsBoard": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "topicIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "boardsChangeBoardOrderResponse": {
+      "type": "object"
+    },
+    "boardsCreateBoardRequest": {
+      "type": "object",
+      "properties": {
+        "boardToCreate": {
+          "$ref": "#/definitions/boardsCreateBoardRequestBoardPrototype"
+        }
+      }
+    },
+    "boardsCreateBoardRequestBoardPrototype": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "topicIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "boardsCreateBoardResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "boardsDeleteBoardResponse": {
+      "type": "object"
+    },
+    "boardsGetAllBoardsResponse": {
+      "type": "object",
+      "properties": {
+        "boards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/boardsBoard"
+          }
+        }
+      }
+    },
+    "boardsGetBoardContentResponse": {
+      "type": "object",
+      "properties": {
+        "topics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/topicsTopicWithFetchedTasks"
+          }
+        }
+      }
+    },
+    "boardsGetBoardResponse": {
+      "type": "object",
+      "properties": {
+        "board": {
+          "$ref": "#/definitions/boardsBoard"
+        }
+      }
+    },
+    "boardsGetBoardsOrderResponse": {
+      "type": "object",
+      "properties": {
+        "order": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    },
+    "boardsUpdateBoardRequestBoardPrototype": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "topicIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "boardsUpdateBoardResponse": {
+      "type": "object"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "tasksPriority": {
+      "type": "string",
+      "enum": [
+        "PRIORITY_UNSPECIFIED",
+        "PRIORITY_LOW",
+        "PRIORITY_MEDIUM",
+        "PRIORITY_HIGH",
+        "PRIORITY_CRITICAL"
+      ],
+      "default": "PRIORITY_UNSPECIFIED"
+    },
+    "tasksTask": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "deps": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "priority": {
+          "$ref": "#/definitions/tasksPriority"
+        },
+        "startTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "finishTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "topicsTopicWithFetchedTasks": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/tasksTask"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+# https://easyp.tech/
+
+lint:
+  use:
+    - DEFAULT
+  enum_zero_value_suffix: _UNSPECIFIED
+  service_suffix: Service
+  ignore:
+    - github.com
+  except:
+    - IMPORT_USED
+deps:
+  - github.com/googleapis/googleapis
+generate:
+  inputs:
+    - directory: api/gateway
+  plugins:
+  - name: go
+    out: ./internal/pb
+    opts:
+      paths: source_relative
+  - name: grpc-gateway
+    out: ./internal/pb
+    opts:
+      paths: source_relative
+      generate_unbound_methods: true
+  - name: openapiv2
+    out: ./docs/spec
+    opts:
+      generate_unbound_methods: true
+  - name: go-vtproto
+    out: ./internal/pb
+    opts:
+      paths: source_relative
+breaking:
+  use:
+    - FILE
+  except:
+    - EXTENSION_MESSAGE_NO_DELETE

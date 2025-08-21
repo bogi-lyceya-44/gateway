@@ -1,0 +1,120 @@
+syntax = "proto3";
+
+option go_package = "github.com/bogi-lyceya-44/gateway/internal/pb/api/gateway/boards;gateway_boards";
+
+package api.v1.gateway.boards;
+
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "api/gateway/boards/models.proto";
+import "api/gateway/tasks/models.proto";
+import "api/gateway/topics/models.proto";
+
+service BoardService {
+  rpc GetBoard(GetBoardRequest) returns (GetBoardResponse) {
+    option (google.api.http) = {
+      get : "/api/v1/boards/{id=*}"
+    };
+  }
+
+  rpc CreateBoard(CreateBoardRequest) returns (CreateBoardResponse) {
+    option (google.api.http) = {
+      post : "/api/v1/boards"
+      body : "*"
+    };
+  }
+
+  rpc UpdateBoard(UpdateBoardRequest) returns (UpdateBoardResponse) {
+    option (google.api.http) = {
+      patch : "/api/v1/boards/{id=*}"
+      body : "board_to_update"
+    };
+  }
+
+  rpc DeleteBoard(DeleteBoardRequest) returns (DeleteBoardResponse) {
+    option (google.api.http) = {
+      delete : "/api/v1/boards/{id=*}"
+    };
+  }
+
+  rpc GetBoardContent(GetBoardContentRequest)
+      returns (GetBoardContentResponse) {
+    option (google.api.http) = {
+      get : "/api/v1/boards/{id=*}/content"
+    };
+  }
+
+  rpc GetAllBoards(GetAllBoardsRequest) returns (GetAllBoardsResponse) {
+    option (google.api.http) = {
+      get : "/api/v1/boards"
+    };
+  }
+
+  rpc GetBoardsOrder(GetBoardsOrderRequest) returns (GetBoardsOrderResponse) {
+    option (google.api.http) = {
+      get : "/api/v1/boards/order"
+    };
+  }
+
+  rpc ChangeBoardOrder(ChangeBoardOrderRequest)
+      returns (ChangeBoardOrderResponse) {
+    option (google.api.http) = {
+      patch : "/api/v1/boards/{id=*}/order"
+      body : "order_to_change"
+    };
+  }
+}
+
+message GetBoardRequest { int64 id = 1; }
+
+message GetBoardResponse { Board board = 1; }
+
+message CreateBoardRequest {
+  message BoardPrototype {
+    string name = 1;
+    repeated int64 topic_ids = 2;
+  }
+
+  BoardPrototype board_to_create = 1;
+}
+
+message CreateBoardResponse { int64 id = 1; }
+
+message UpdateBoardRequest {
+  message BoardPrototype {
+    optional string name = 1;
+    repeated int64 topic_ids = 2;
+  }
+
+  int64 id = 1;
+  BoardPrototype board_to_update = 2;
+}
+
+message UpdateBoardResponse {}
+
+message DeleteBoardRequest { int64 id = 1; }
+
+message DeleteBoardResponse {}
+
+message GetBoardContentRequest { int64 id = 1; }
+
+message GetBoardContentResponse {
+  repeated api.v1.gateway.topics.TopicWithFetchedTasks topics = 1;
+}
+
+message GetAllBoardsRequest {}
+
+message GetAllBoardsResponse { repeated Board boards = 1; }
+
+message ChangeBoardOrderRequest {
+  message BoardOrder { int32 place = 1; }
+
+  int64 id = 1;
+  BoardOrder order_to_change = 2;
+}
+
+message ChangeBoardOrderResponse {}
+
+message GetBoardsOrderRequest {}
+
+message GetBoardsOrderResponse { map<int64, int32> order = 1; }
