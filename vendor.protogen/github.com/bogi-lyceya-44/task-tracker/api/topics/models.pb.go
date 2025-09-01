@@ -11,7 +11,7 @@ import (
 	sync "sync"
 	unsafe "unsafe"
 
-	tasks "github.com/bogi-lyceya-44/task-tracker/internal/pb/api/tasks"
+	tasks "github.com/bogi-lyceya-44/task-tracker/pkg/pb/api/tasks"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -196,7 +196,7 @@ const file_api_topics_models_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtBSZQgithub.com/bogi-lyceya-44/task-tracker/internal/pb/api/topics;task_tracker_topicsb\x06proto3"
+	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtBNZLgithub.com/bogi-lyceya-44/task-tracker/pkg/pb/api/topics;task_tracker_topicsb\x06proto3"
 
 var (
 	file_api_topics_models_proto_rawDescOnce sync.Once

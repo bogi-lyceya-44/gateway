@@ -9,7 +9,7 @@ import (
 	io "io"
 	unsafe "unsafe"
 
-	tasks "github.com/bogi-lyceya-44/task-tracker/internal/pb/api/tasks"
+	tasks "github.com/bogi-lyceya-44/task-tracker/pkg/pb/api/tasks"
 	protohelpers "github.com/planetscale/vtprotobuf/protohelpers"
 	timestamppb1 "github.com/planetscale/vtprotobuf/types/known/timestamppb"
 	proto "google.golang.org/protobuf/proto"

@@ -11,8 +11,8 @@ import (
 	sync "sync"
 	unsafe "unsafe"
 
-	_ "github.com/bogi-lyceya-44/task-tracker/internal/pb/api/tasks"
-	topics "github.com/bogi-lyceya-44/task-tracker/internal/pb/api/topics"
+	_ "github.com/bogi-lyceya-44/task-tracker/pkg/pb/api/tasks"
+	topics "github.com/bogi-lyceya-44/task-tracker/pkg/pb/api/topics"
 	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -960,7 +960,7 @@ const file_api_boards_services_proto_rawDesc = "" +
 	"\x0fGetBoardContent\x122.api.v1.task_tracker.boards.GetBoardContentRequest\x1a3.api.v1.task_tracker.boards.GetBoardContentResponse\"$\x82\xd3\xe4\x93\x02\x1e:\x01*\"\x19/api/v1/get_board_content\x12\x94\x01\n" +
 	"\fGetAllBoards\x12/.api.v1.task_tracker.boards.GetAllBoardsRequest\x1a0.api.v1.task_tracker.boards.GetAllBoardsResponse\"!\x82\xd3\xe4\x93\x02\x1b:\x01*\"\x16/api/v1/get_all_boards\x12\x98\x01\n" +
 	"\rGetBoardOrder\x120.api.v1.task_tracker.boards.GetBoardOrderRequest\x1a1.api.v1.task_tracker.boards.GetBoardOrderResponse\"\"\x82\xd3\xe4\x93\x02\x1c:\x01*\"\x17/api/v1/get_board_order\x12\xa4\x01\n" +
-	"\x10ChangeBoardOrder\x123.api.v1.task_tracker.boards.ChangeBoardOrderRequest\x1a4.api.v1.task_tracker.boards.ChangeBoardOrderResponse\"%\x82\xd3\xe4\x93\x02\x1f:\x01*\"\x1a/api/v1/change_board_orderBSZQgithub.com/bogi-lyceya-44/task-tracker/internal/pb/api/boards;task_tracker_boardsb\x06proto3"
+	"\x10ChangeBoardOrder\x123.api.v1.task_tracker.boards.ChangeBoardOrderRequest\x1a4.api.v1.task_tracker.boards.ChangeBoardOrderResponse\"%\x82\xd3\xe4\x93\x02\x1f:\x01*\"\x1a/api/v1/change_board_orderBNZLgithub.com/bogi-lyceya-44/task-tracker/pkg/pb/api/boards;task_tracker_boardsb\x06proto3"
 
 var (
 	file_api_boards_services_proto_rawDescOnce sync.Once

@@ -10,7 +10,7 @@ import (
 	io "io"
 	unsafe "unsafe"
 
-	topics "github.com/bogi-lyceya-44/task-tracker/internal/pb/api/topics"
+	topics "github.com/bogi-lyceya-44/task-tracker/pkg/pb/api/topics"
 	protohelpers "github.com/planetscale/vtprotobuf/protohelpers"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"

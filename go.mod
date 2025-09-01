@@ -4,7 +4,7 @@ go 1.24.5
 
 require (
 	github.com/bogi-lyceya-44/common v0.0.10
-	github.com/bogi-lyceya-44/task-tracker v0.0.3
+	github.com/bogi-lyceya-44/task-tracker v0.0.4
 	github.com/caarlos0/env/v11 v11.3.1
 	github.com/envoyproxy/protoc-gen-validate v1.2.1
 	github.com/flowchartsman/swaggerui v0.0.0-20221017034628-909ed4f3701b
