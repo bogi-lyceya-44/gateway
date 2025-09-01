@@ -1,0 +1,4 @@
+docs/** -diff linguist-generated=true
+internal/pb/** -diff linguist-generated=true
+vendor.protogen/** -diff linguist-generated=true
+

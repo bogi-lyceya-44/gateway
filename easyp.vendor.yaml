@@ -1,0 +1,39 @@
+# https://easyp.tech/
+
+lint:
+  use:
+    - DEFAULT
+  enum_zero_value_suffix: _UNSPECIFIED
+  service_suffix: Service
+  ignore:
+    - github.com
+  except:
+    - IMPORT_USED
+deps:
+  - github.com/googleapis/googleapis
+  - github.com/bufbuild/protoc-gen-validate
+generate:
+  inputs:
+    - git_repo:
+        url: "github.com/bogi-lyceya-44/task-tracker"
+        sub_directory: api/boards
+    - git_repo:
+        url: "github.com/bogi-lyceya-44/task-tracker"
+        sub_directory: api/topics
+    - git_repo:
+        url: "github.com/bogi-lyceya-44/task-tracker"
+        sub_directory: api/tasks
+  plugins:
+    - name: go
+      out: ./vendor.protogen/github.com/bogi-lyceya-44/task-tracker
+      opts:
+        paths: source_relative
+    - name: go-vtproto
+      out: ./vendor.protogen/github.com/bogi-lyceya-44/task-tracker
+      opts:
+        paths: source_relative
+breaking:
+  use:
+    - FILE
+  except:
+    - EXTENSION_MESSAGE_NO_DELETE

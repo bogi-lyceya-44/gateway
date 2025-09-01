@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option go_package = "github.com/bogi-lyceya-44/gateway/internal/pb/api/gateway/topics;gateway_topics";
+
+package api.v1.gateway.topics;
+
+import "google/protobuf/timestamp.proto";
+import "api/gateway/tasks/models.proto";
+
+message Topic {
+  int64 id = 1;
+  string name = 2;
+  repeated int64 task_ids = 3;
+
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+}
+
+message TopicWithFetchedTasks {
+  int64 id = 1;
+  string name = 2;
+  repeated api.v1.gateway.tasks.Task tasks = 3;
+
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+}
